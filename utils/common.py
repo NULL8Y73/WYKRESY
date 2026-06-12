@@ -2,6 +2,7 @@ import shutil
 import sys
 
 from utils.display import logger, custom_input, clear_terminal
+from PIL import Image
 
 
 def exit_program():
@@ -10,7 +11,7 @@ def exit_program():
     Returns:
         None: Does not return normally.
     """
-    
+
     sys.exit()
 
 

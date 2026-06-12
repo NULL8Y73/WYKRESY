@@ -7,7 +7,7 @@ from sort.sort_by_y import (
     sort_y_increasing, sort_y_decreasing
     )
 from utils.common import choice_menu, exit_program
-from utils.display import logger, clear_terminal, custom_input
+from utils.display import logger, clear_terminal, custom_input, base_screen
 from validation import (
     validate_path_is_exist, validate_path_is_folder, 
     validate_path_extension, validate_file_is_full, 
@@ -15,7 +15,7 @@ from validation import (
     validate_check_rows_number, validate_check_size_of_file,
     validate_data_type
 )
-from config import FILE_SIZE_LIMIT, ROWS_LIMIT
+from config import FILE_SIZE_LIMIT, ROWS_LIMIT, LOGO_SCALE_PERCENT
 
 
 
@@ -107,7 +107,7 @@ def display_chart_with_menu(x_values, y_values, rows):
     data_type_to_sort = set_data_type_to_values(rows)
 
     while True:
-        clear_terminal()
+        base_screen()
 
         charts = charts_generator(x_values, y_values)
         show_block(charts)
@@ -152,22 +152,22 @@ def validate_csv_file_charts(read_file):
 
     rows_number = validate_check_rows_number(read_file)
     if rows_number > ROWS_LIMIT:
-        clear_terminal()
+        base_screen()
         logger.error(f"Przekroczono limit wierszy (liczba wierszy w pliku: {rows_number}, limit: {ROWS_LIMIT})")
         return False
 
     if validate_file_is_full(read_file) == False:
-        clear_terminal()
+        base_screen()
         logger.error("Plik jest pusty.")
         return False
     
     if validate_file_rows(read_file) != 2:
-        clear_terminal()
+        base_screen()
         logger.error("Plik powinien zawierać 2 kolumny danych.")
         return False
     
     if validate_file_type(read_file) == False:
-        clear_terminal()
+        base_screen()
         logger.error("Druga kolumna powinna zawierać jedynie liczby całkowite lub zmiennoprzecinkowe.")
         return False
 
@@ -186,24 +186,24 @@ def validate_path(file_path):
     Returns:
         bool: True if file path and content are valid, False otherwise.
     """
-    
+
     if validate_path_is_exist(file_path) == False:
-        clear_terminal()
+        base_screen()
         logger.error("Podano nie poprawną ścieżkę.")
         return False
     
     if validate_path_is_folder(file_path) == False:
-        clear_terminal()
+        base_screen()
         logger.error("Wybrano folder zamiast pliku.")
         return False
     
     if validate_path_extension(file_path) != ".csv":
-        clear_terminal()
+        base_screen()
         logger.error("Podano błędny foramt pliku.")
         return False
     
     if validate_check_size_of_file(file_path) > FILE_SIZE_LIMIT:
-        clear_terminal()
+        base_screen()
         logger.error(f"Rozmiar pliku nie może przekraczać {FILE_SIZE_LIMIT} MB.")
         return False
 

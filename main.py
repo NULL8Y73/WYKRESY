@@ -1,9 +1,8 @@
 import sys
 
-from data.processor import validate_path, ask_for_file_path
+from data.processor import validate_path, ask_for_file_path, get_values_from_file
 from utils.common import choice_menu, exit_program
-from data.processor import get_values_from_file, validate_path
-from utils.display import logger, custom_input, clear_terminal
+from utils.display import logger, custom_input, base_screen
 
 
 # Główna funkcja
@@ -18,7 +17,7 @@ def main():
         None: This function executes the application flow and exits after processing the selected file or terminating the program.
     """
 
-    clear_terminal()
+    base_screen()
     logger.info("MENU")
     file_path = choice_menu( 
         ("Wczytaj plik", ask_for_file_path),

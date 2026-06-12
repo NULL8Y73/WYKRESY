@@ -20,13 +20,15 @@
   - second column (y-axis) ascending or descending
 - Automatically detects data type for the first column, including string, date, and numeric values
 - Clean terminal UI with centered messages and color-coded logging
+- Displays a startup base screen
 
 ## Tech Stack
 
 - Python
 - Standard library modules: `csv`, `os`, `logging`, `shutil`, `sys`
-- Third-party library:
+- Third-party libraries:
   - `python-dateutil` for date parsing in data validation
+  - `Pillow` for image loading and ASCII art conversion
 
 ## Prerequisites & Installation
 
@@ -93,7 +95,7 @@ Date,Value
 - `sort/sort_by_x.py` — x-axis sorting logic
 - `sort/sort_by_y.py` — y-axis sorting logic
 - `utils/common.py` — core menu and input helpers
-- `utils/display.py` — terminal rendering, logging, and input handling
+- `utils/display.py` — terminal rendering, logging, input handling, and ASCII logo display
 
 ## Notes
 
