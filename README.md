@@ -1,5 +1,5 @@
 # Wykresy
-**Author:** Nela Poławska
+**Author:** Nela Popławska
 
 ## Description
 
